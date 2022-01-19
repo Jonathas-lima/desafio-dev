@@ -1,10 +1,7 @@
 package br.com.bycoderstec.desafiodev.model;
 
 import br.com.bycoderstec.desafiodev.model.enums.TipoTransacaoEnum;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,6 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Getter
 public class Transacao {
 
     @Id
