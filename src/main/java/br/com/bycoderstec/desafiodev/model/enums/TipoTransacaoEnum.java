@@ -4,25 +4,27 @@ import java.util.Arrays;
 
 public enum TipoTransacaoEnum {
 
-    DEBITO(1, "+"),
-    BOLETO(2, "-"),
-    FINANCIAMENTO(3,  "-"),
-    CREDITO(4, "+"  ),
-    RECEBIMENTO_EMPRESTIMO(5, "+"),
-    VENDAS(6, "+"),
-    RECEBIMENTO_TED(7, "+"),
-    RECEBIMENTO_DOC(8, "+"),
-    ALUGUEL(9, "-"),
+    DEBITO(1, "Débito", "+"),
+    BOLETO(2,"Boleto","-"),
+    FINANCIAMENTO(3, "Financiamento",  "-"),
+    CREDITO(4, "Crédito", "+"  ),
+    RECEBIMENTO_EMPRESTIMO(5, "Recebimento Empréstimo","+"),
+    VENDAS(6, "Vendas", "+"),
+    RECEBIMENTO_TED(7, "Recebimento TED", "+"),
+    RECEBIMENTO_DOC(8, "Recebimento DOC", "+"),
+    ALUGUEL(9, "Aluguel", "-"),
 
-    VALOR_NAO_MAPEADO(99, "");
+    VALOR_NAO_MAPEADO(99,"Valor não mapeado", "");
 
 
 
     private int cod;
     private String sinal;
+    private String descricao;
 
-    TipoTransacaoEnum(int cod, String sinal) {
+    TipoTransacaoEnum(int cod, String descricao, String sinal) {
         this.cod = cod;
+        this.descricao = descricao;
         this.sinal = sinal;
     }
 
@@ -36,5 +38,9 @@ public enum TipoTransacaoEnum {
 
     public String getSinal() {
         return sinal;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }
