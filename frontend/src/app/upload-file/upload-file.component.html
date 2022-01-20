@@ -1,0 +1,34 @@
+
+<div class="container">
+    <div class="fileupload">
+
+        <div style="margin-bottom: 1%;">
+            <h2 class="al">Upload File</h2>
+        </div>
+
+        
+        <form [formGroup]="myForm" (ngSubmit)="submit()">
+               
+            <div class="form-group">
+                <input 
+                    formControlName="file"
+                    id="file" 
+                    type="file" 
+                    accept=".txt"
+                    class="form-control"
+                    (change)="selectFile($event)">
+            
+            </div>
+            <div class="row" style="margin-top: 1%;">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Processar Arquivo</button>
+                    <button type="button" class="btn btn-outline-danger" style="margin-left: 1%;" (click) = limpar()>Limpar</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+
+       
