@@ -1,6 +1,0 @@
-{
-  "/cnab": {
-    "target": "http://java-app:8080",
-    "secure": false
-  }
-}
