@@ -1,23 +1,50 @@
 version: '3'
 
 services:
+  java-app:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: java-app
+    depends_on:
+      - mysqlsrv
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqlsrv:3306/desafio-dev
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=12345
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - compose-network
+
   mysqlsrv:
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: "12345"
       MYSQL_DATABASE: "desafio-dev"
     ports:
-      - 3306:3306
+      - "3306:3306"
     networks:
-      - mysql-compose-network
+      - compose-network
 
   adminer:
     image: adminer
     ports:
-      - 8085:8080
+      - "8085:8080"
     networks:
-      - mysql-compose-network
+      - compose-network
+
+  angular-ui:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: angular-ui
+    networks:
+      - compose-network
 
 networks:
-  mysql-compose-network:
+  compose-network:
     driver: bridge

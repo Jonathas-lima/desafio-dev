@@ -7,15 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class LojaService {
 
+  rootURL = '/cnab';
+
   constructor(private https: HttpClient) { }
 
   getLojas(): Observable<HttpEvent<{}>> {
-    
-    const newRequest = new HttpRequest('GET', 'http://localhost:8080/api/lojas', {
+
+    const newRequest = new HttpRequest('GET', this.rootURL + '/api/lojas', {
       reportProgress: true,
       responseType: 'json'
     });
-    
+
     return this.https.request(newRequest);
   }
 }
