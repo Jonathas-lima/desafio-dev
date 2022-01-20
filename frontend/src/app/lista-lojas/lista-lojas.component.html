@@ -4,43 +4,45 @@
         <h2>Lista de lojas</h2>
     </div>
     
-      <div class="accordion" id="accordionContainer">
-        <div class="accordion-item" *ngFor="let loja of lojas; let i = index">
-          <h2 class="accordion-header" [id]="'heading' + i">
-           <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
-             {{ loja.nomeLoja }}
-            </button>
-          </h2>
-          <div [id]="'collapse' + i" class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading' + i"
-            data-bs-parent="#accordionContainer">
-            <div class="accordion-body">
-              
-                <div *ngFor="let tr of loja.transacoes">
-
-                    <div class= "row">
-                        <div class="col-2">
-                            {{tr.data}}
-                        </div>
+    <div class="ScrollStyle">
+        <div class="accordion" id="accordionContainer">
+            <div class="accordion-item" *ngFor="let loja of lojas; let i = index">
+              <h2 class="accordion-header" [id]="'heading' + i">
+               <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
+                 {{ loja.nomeLoja }}
+                </button>
+              </h2>
+              <div [id]="'collapse' + i" class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading' + i"
+                data-bs-parent="#accordionContainer">
+                <div class="accordion-body">
+                  
+                    <div *ngFor="let tr of loja.transacoes">
     
-                        <div class="col-6">
-                            {{tr.desc}}
+                        <div class= "row">
+                            <div class="col-2">
+                                {{tr.data}}
+                            </div>
+        
+                            <div class="col-6">
+                                {{tr.desc}}
+                            </div>
+                            <div class="col-4">
+                                {{tr.sinal}}  {{tr.valor | currency: 'BRL'}}
+                            </div>
                         </div>
+                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-2"></div>
+                        <div class="col-6"></div>
                         <div class="col-4">
-                            {{tr.sinal}}  {{tr.valor | currency: 'BRL'}}
+                            <h6>Saldo: <span [class] = "loja.saldo >= 0 ? 'badge bg-success' : 'badge bg-danger'">{{loja.saldo | currency: 'BRL'}}</span></h6>
                         </div>
                     </div>
-                    
                 </div>
-                <div class="row mt-2">
-                    <div class="col-2"></div>
-                    <div class="col-6"></div>
-                    <div class="col-4">
-                        <h6>Saldo: <span [class] = "loja.saldo >= 0 ? 'badge bg-success' : 'badge bg-danger'">{{loja.saldo | currency: 'BRL'}}</span></h6>
-                    </div>
-                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+    </div>
 </div>
 

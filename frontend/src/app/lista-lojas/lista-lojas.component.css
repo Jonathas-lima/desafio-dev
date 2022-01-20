@@ -5,3 +5,9 @@
 .debito {
     background-color: rgb(255, 168, 168);
 }
+
+.ScrollStyle
+{
+    max-height: 800px;
+    overflow-y: scroll;
+}
