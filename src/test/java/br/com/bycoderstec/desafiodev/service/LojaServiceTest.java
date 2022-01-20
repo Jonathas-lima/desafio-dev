@@ -7,10 +7,11 @@ import br.com.bycoderstec.desafiodev.service.impl.LojaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -52,11 +53,28 @@ public class LojaServiceTest {
         assertNotNull(lojaSalva.getRepresentante());
     }
 
+    @Test
+    public void deveriaBuscarTodasAsLojas() {
+        when(lojaRepository.findAll()).thenReturn(listaLojas());
+
+        List<Loja> lojas = lojaService.obterLojas();
+        assertFalse(lojas.isEmpty());
+        assertEquals(2, lojas.size());
+    }
+
 
     private Optional<Loja> getLojaPreenchido(){
         return Optional.of(Loja.builder()
                 .nomeLoja("Nome da loja")
                 .representante(Representante.builder().build())
                 .build());
+    }
+
+    private List<Loja> listaLojas() {
+
+        Loja loja1 = Loja.builder().build();
+        Loja loja2 = Loja.builder().build();
+
+        return asList(loja1, loja2);
     }
 }

@@ -5,6 +5,7 @@ import br.com.bycoderstec.desafiodev.repository.LojaRepository;
 import br.com.bycoderstec.desafiodev.service.LojaService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,10 @@ public class LojaServiceImpl implements LojaService {
 
         Optional<Loja> lojaSalva = lojaRepository.findByNomeLoja(loja.getNomeLoja());
         return lojaSalva.orElseGet(() -> lojaRepository.save(loja));
+    }
+
+    @Override
+    public List<Loja> obterLojas() {
+        return lojaRepository.findAll();
     }
 }
