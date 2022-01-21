@@ -28,12 +28,12 @@ services:
     networks:
       - compose-network
 
-  adminer:
-    image: adminer
-    ports:
-      - "8085:8080"
-    networks:
-      - compose-network
+#  adminer:
+#    image: adminer
+#    ports:
+#      - "8085:8080"
+#    networks:
+#      - compose-network
 
   angular-ui:
     build:
